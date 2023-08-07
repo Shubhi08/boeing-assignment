@@ -1,0 +1,30 @@
+<div class = "main-container">
+  <div ><h3>Flight Chart</h3></div>
+  <div style="margin-bottom: 20px">
+    <input type = "text" placeholder="Search flight number" [(ngModel)]="searchText"/>
+  </div>
+  <div class="table-responsive" >
+  <table class = "table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Airline</th>
+      <th scope="col">Flight Number</th>
+      <th scope="col">Status</th>
+      <th scope="col">Estimate Time</th>
+      <th scope="col">Actual Time</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let flight of flights | async | nameFilter: searchText:'flightNo'" [ngClass]="{'status':flight.status == 'Delayed'}">
+      <th scope="row">{{flight.airline}}</th>
+      <td>{{flight.flightNo}}</td>
+      <td>{{flight.status}}</td>
+      <td>{{flight.estimateTime}}</td>
+      <td>{{flight.actualTime}}</td>
+      <td><button (click)="flightDetails(flight.flightNo)" class="btn btn-danger">View</button>
+    </tr>
+  </table>
+  </div>
+
+</div>

@@ -1,0 +1,32 @@
+<h2>Details</h2>
+
+<hr/>
+<div *ngIf="flight">
+  <div>
+    <label><b>Flight ID: </b></label> {{flight.id}}
+  </div>
+  <div>
+    <label><b>Airline: </b></label> {{flight.airline}}
+  </div>
+  <div>
+    <label><b>FlightNo: </b></label> {{flight.flightNo}}
+  </div>
+  <div>
+    <label><b>FlightType: </b></label> {{flight.flightType}}
+  </div>
+  <div *ngIf="flight.flightType == 'Inbound'">
+    <label><b>ETD: </b></label> {{flight.estimateTime}}
+  </div>
+  <div *ngIf="flight.flightType == 'Outbound'">
+    <label><b>ETA: </b></label> {{flight.estimateTime}}
+  </div>
+  <div>
+    <label><b>Flight Status: </b></label> {{flight.status}}
+  </div>
+  <button (click)="download(flight)" class="btn btn-primary">Export Data</button><br>
+
+</div>
+
+<br>
+<br>
+
