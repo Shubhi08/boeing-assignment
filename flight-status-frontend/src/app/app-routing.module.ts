@@ -9,6 +9,8 @@ const routes: Routes = [
 
   { path: '', redirectTo: 'flights', pathMatch: 'full' },
   { path: 'flights', component: FlightListComponent },
+  { path: 'flights/inbound', component: FlightListComponent },
+  { path: 'flights/outbound', component: FlightListComponent },
   { path: 'add', component: AddFlightComponent },
   { path: 'details/:flightNo', component: FlightDetailsComponent },
 ];

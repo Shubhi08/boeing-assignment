@@ -18,6 +18,16 @@ public class FlightServiceImpl implements FlightService{
     }
 
     @Override
+    public List<Flight> getInbound() {
+        return dao.getFlightbyType("Inbound");
+    }
+
+    @Override
+    public List<Flight> getOutbound() {
+        return dao.getFlightbyType("Outbound");
+    }
+
+    @Override
     public Flight fetchFlightDetails(String flightNo) {
         return dao.getFlightbyId(flightNo);
     }

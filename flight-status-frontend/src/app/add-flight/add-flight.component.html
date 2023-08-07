@@ -15,6 +15,14 @@
       <label for="flightNo">Flight no</label>
       <input type="text" class="form-control" id="flightNo" required [(ngModel)]="flight.flightNo" name="flightNo">
     </div>
+    <div class="form-group">
+      <label for="source">Source</label>
+      <input type="text" class="form-control" id="source" required [(ngModel)]="flight.source" name="source">
+    </div>
+    <div class="form-group">
+      <label for="destination">Destination</label>
+      <input type="text" class="form-control" id="destination" required [(ngModel)]="flight.destination" name="destination">
+    </div>
 
     <div class="form-group">
       <label for="flightType">Flight type(Inbound/Outbound)</label>
@@ -23,17 +31,17 @@
 
     <div class="form-group">
       <label for="estimateTime">Estimate Time</label>
-      <input type="text" class="form-control" id="estimateTime" required [(ngModel)]="flight.estimateTime" name="estimateTime">
+      <input type="datetime-local" class="form-control" id="estimateTime" required [(ngModel)]="flight.estimateTime" name="estimateTime">
     </div>
 
     <div class="form-group">
       <label for="actualTime">Actual Time</label>
-      <input type="text" class="form-control" id="actualTime" required [(ngModel)]="flight.actualTime" name="actualTime">
+      <input type="datetime-local" class="form-control" id="actualTime" required [(ngModel)]="flight.actualTime" name="actualTime">
     </div>
 
     <div class="form-group">
-      <label for="status">Flight status - Scheduled</label>
-      <input type="text" class="form-control" id="status" required [(ngModel)]="flight.status" name="status">
+      <label for="status">Flight status</label>
+      <input type="text" class="form-control" id="status" required [(ngModel)]="flight.status" name="status" [defaultValue]="Scheduled">
     </div>
 
     <button type="submit" class="btn btn-success">Submit</button>

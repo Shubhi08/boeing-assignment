@@ -21,11 +21,15 @@ public class Flight {
 	private Timestamp actualTime;
 	@Column
 	private String flightType;
+	@Column
+	private String source;
+	@Column
+	private String destination;
 
 	public Flight(){
 
 	}
-	public Flight(Long id, String airline, String flightNo, String status, Timestamp estimateTime, Timestamp actualTime, String flightType) {
+	public Flight(Long id, String airline, String flightNo, String status, Timestamp estimateTime, Timestamp actualTime, String flightType, String source, String destination) {
 		this.id = id;
 		this.airline = airline;
 		this.flightNo = flightNo;
@@ -33,6 +37,8 @@ public class Flight {
 		this.estimateTime = estimateTime;
 		this.actualTime = actualTime;
 		this.flightType = flightType;
+		this.source = source;
+		this.destination = destination;
 	}
 
 	public Long getId() {
@@ -91,4 +97,19 @@ public class Flight {
 		this.flightType = flightType;
 	}
 
+	public String getDestination() {
+		return destination;
+	}
+
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+
+	public String getSource() {
+		return source;
+	}
+
+	public void setSource(String source) {
+		this.source = source;
+	}
 }

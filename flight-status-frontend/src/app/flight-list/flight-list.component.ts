@@ -14,6 +14,8 @@ import {async} from "rxjs/internal/scheduler/async";
 export class FlightListComponent implements OnInit {
 
   flights: Observable<Flight[]>;
+  inboundFlights: Observable<Flight[]>;
+  outboundFlights: Observable<Flight[]>;
   searchText: string;
 
   constructor(private flightService: FlightService,
@@ -24,7 +26,9 @@ export class FlightListComponent implements OnInit {
   }
 
   reloadData() {
-    this.flights = this.flightService.getFlights();
+    // this.flights = this.flightService.getFlights();
+    this.inboundFlights = this.flightService.getInboundFlights();
+    this.outboundFlights = this.flightService.getOutboundFlights();
   }
 
   flightDetails(flightNo: any){

@@ -6,4 +6,6 @@ export class Flight {
   estimateTime: any;
   actualTime: any;
   flightType: string;
+  source: string;
+  destination: string;
 }

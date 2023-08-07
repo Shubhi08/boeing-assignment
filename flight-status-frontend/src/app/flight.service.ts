@@ -8,6 +8,8 @@ import {Flight} from './flight';
 })
 export class FlightService {
   private baseUrl = 'http://localhost:8080/springboot/api/v1/flights';
+  private inbound = 'http://localhost:8080/springboot/api/v1/flights/inbound';
+  private outbound = 'http://localhost:8080/springboot/api/v1/flights/outbound';
   private newFlight = 'http://localhost:8080/springboot/api/v1/addFlight';
 
   constructor(private http: HttpClient) { }
@@ -26,5 +28,13 @@ export class FlightService {
 
    getFlights(): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
+  }
+
+  getInboundFlights(): Observable<any> {
+    return this.http.get(`${this.inbound}`);
+  }
+
+  getOutboundFlights(): Observable<any> {
+    return this.http.get(`${this.outbound}`);
   }
 }

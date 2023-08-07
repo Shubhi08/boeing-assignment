@@ -27,6 +27,14 @@ public class FlightController {
 	public List<Flight> getAllFlights() {
 		return flightService.getFlights();
 	}
+	@GetMapping("/flights/outbound")
+	public List<Flight> getOutboundFlights() {
+		return flightService.getOutbound();
+	}
+	@GetMapping("/flights/inbound")
+	public List<Flight> getInboundFlights() {
+		return flightService.getInbound();
+	}
 
 	@GetMapping("/flights/{flightNo}")
 	public ResponseEntity<Flight> getFlightById(@PathVariable(value = "flightNo") String flightNo)

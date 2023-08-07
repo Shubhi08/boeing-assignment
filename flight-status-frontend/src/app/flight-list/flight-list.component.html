@@ -1,25 +1,29 @@
-<div class = "main-container">
-  <div ><h3>Flight Chart</h3></div>
+<div *ngIf="inboundFlights" class = "main-container">
+  <div ><h3>Arrival</h3></div>
   <div style="margin-bottom: 20px">
     <input type = "text" placeholder="Search flight number" [(ngModel)]="searchText"/>
   </div>
-  <div class="table-responsive" >
+  <div  class="table-responsive" >
   <table class = "table table-striped">
     <thead class="thead-dark">
     <tr>
       <th scope="col">Airline</th>
       <th scope="col">Flight Number</th>
+      <th scope="col">Source</th>
+      <th scope="col">Destination</th>
       <th scope="col">Status</th>
-      <th scope="col">Estimate Time</th>
-      <th scope="col">Actual Time</th>
+      <th scope="col">ETA</th>
+      <th scope="col">ATA</th>
       <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let flight of flights | async | nameFilter: searchText:'flightNo'" [ngClass]="{'status':flight.status == 'Delayed'}">
+    <tr *ngFor="let flight of inboundFlights | async | nameFilter: searchText:'flightNo'" [ngClass]="{'status':flight.status == 'Delayed'}">
       <th scope="row">{{flight.airline}}</th>
       <td>{{flight.flightNo}}</td>
       <td>{{flight.status}}</td>
+      <td>{{flight.source}}</td>
+      <td>{{flight.destination}}</td>
       <td>{{flight.estimateTime}}</td>
       <td>{{flight.actualTime}}</td>
       <td><button (click)="flightDetails(flight.flightNo)" class="btn btn-danger">View</button>
@@ -28,3 +32,39 @@
   </div>
 
 </div>
+
+<div *ngIf="outboundFlights" class = "main-container">
+  <div ><h3>Departure</h3></div>
+  <div style="margin-bottom: 20px">
+    <input type = "text" placeholder="Search flight number" [(ngModel)]="searchText"/>
+  </div>
+  <div  class="table-responsive" >
+    <table class = "table table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Airline</th>
+        <th scope="col">Flight Number</th>
+        <th scope="col">Source</th>
+        <th scope="col">Destination</th>
+        <th scope="col">Status</th>
+        <th scope="col">ETD</th>
+        <th scope="col">ATD</th>
+        <th scope="col">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let flight of outboundFlights | async | nameFilter: searchText:'flightNo'" [ngClass]="{'status':flight.status == 'Delayed'}">
+        <th scope="row">{{flight.airline}}</th>
+        <td>{{flight.flightNo}}</td>
+        <td>{{flight.source}}</td>
+        <td>{{flight.destination}}</td>
+        <td>{{flight.status}}</td>
+        <td>{{flight.estimateTime}}</td>
+        <td>{{flight.actualTime}}</td>
+        <td><button (click)="flightDetails(flight.flightNo)" class="btn btn-danger">View</button>
+      </tr>
+    </table>
+  </div>
+
+</div>
+

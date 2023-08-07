@@ -26,6 +26,13 @@ public class FlightDao {
 
     }
 
+    public List<Flight> getFlightbyType(String flightType){
+        String fetchFlight = "Select * from flight where flight_type = :flightType";
+        MapSqlParameterSource sqlParameterSource = new MapSqlParameterSource();
+        sqlParameterSource.addValue("flightType", flightType);
+        return jdbcTemplate.query(fetchFlight,sqlParameterSource,new FlightMapper());
+    }
+
     public Flight getFlightbyId(String flightNo){
         String fetchFlight = "Select * from flight where flight_no = :flightNo";
         MapSqlParameterSource sqlParameterSource = new MapSqlParameterSource();
@@ -35,12 +42,14 @@ public class FlightDao {
     }
 
     public void save(Flight flight) {
-        String insertQuery = "insert into flight(id, actual_time, airline, estimate_time, flight_no, flight_type, status) values (:id, :actualTime, :airline, :estimateTime, :flightNo, :flightType, :status)";
+        String insertQuery = "insert into flight(id, actual_time, airline, estimate_time, source, destination, flight_no, flight_type, status) values (:id, :actualTime, :airline, :estimateTime, :source, :destination, :flightNo, :flightType, :status)";
         MapSqlParameterSource sqlParameterSource = new MapSqlParameterSource();
         sqlParameterSource.addValue("id", flight.getId());
         sqlParameterSource.addValue("actualTime", flight.getActualTime());
         sqlParameterSource.addValue("airline", flight.getAirline());
         sqlParameterSource.addValue("estimateTime", flight.getEstimateTime());
+        sqlParameterSource.addValue("source", flight.getSource());
+        sqlParameterSource.addValue("destination", flight.getDestination());
         sqlParameterSource.addValue("flightNo", flight.getFlightNo());
         sqlParameterSource.addValue("flightType", flight.getFlightType());
         sqlParameterSource.addValue("status", flight.getStatus());
@@ -56,7 +65,8 @@ public class FlightDao {
             flight.setId(resultSet.getLong("ID"));
             flight.setAirline(resultSet.getString("AIRLINE"));
             flight.setFlightNo(resultSet.getString("FLIGHT_NO"));
-            //flight.setStatus(resultSet.getString("STATUS"));
+            flight.setSource(resultSet.getString("SOURCE"));
+            flight.setDestination(resultSet.getString("DESTINATION"));
             flight.setEstimateTime(resultSet.getTimestamp("ESTIMATE_TIME"));
             flight.setActualTime(resultSet.getTimestamp("ACTUAL_TIME"));
             if(flight.getEstimateTime().equals(flight.getActualTime())){

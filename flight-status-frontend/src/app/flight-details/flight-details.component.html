@@ -12,6 +12,12 @@
     <label><b>FlightNo: </b></label> {{flight.flightNo}}
   </div>
   <div>
+    <label><b>Source: </b></label> {{flight.source}}
+  </div>
+  <div>
+    <label><b>Destination: </b></label> {{flight.destination}}
+  </div>
+  <div>
     <label><b>FlightType: </b></label> {{flight.flightType}}
   </div>
   <div *ngIf="flight.flightType == 'Inbound'">
