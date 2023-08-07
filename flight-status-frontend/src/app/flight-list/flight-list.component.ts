@@ -17,6 +17,7 @@ export class FlightListComponent implements OnInit {
   inboundFlights: Observable<Flight[]>;
   outboundFlights: Observable<Flight[]>;
   searchText: string;
+  searchFlight: string;
 
   constructor(private flightService: FlightService,
     private router: Router) {}
