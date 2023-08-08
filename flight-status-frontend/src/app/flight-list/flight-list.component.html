@@ -21,9 +21,9 @@
     <tr *ngFor="let inboundFlight of inboundFlights | async | nameFilter: searchFlight:'flightNo'" [ngClass]="{'status':inboundFlight.status == 'Delayed'}">
       <th scope="row">{{inboundFlight.airline}}</th>
       <td>{{inboundFlight.flightNo}}</td>
-      <td>{{inboundFlight.status}}</td>
       <td>{{inboundFlight.source}}</td>
       <td>{{inboundFlight.destination}}</td>
+      <td>{{inboundFlight.status}}</td>
       <td>{{inboundFlight.estimateTime}}</td>
       <td>{{inboundFlight.actualTime}}</td>
       <td><button (click)="flightDetails(inboundFlight.flightNo)" class="btn btn-danger">View</button>
